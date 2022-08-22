@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yes or No</title>
+
+
+    <style>
+
+        body, html
+        {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+
+            background: rgb(207, 207, 207);
+
+            overflow: hidden;
+        }
+
+        .container
+        {
+            position: absolute;
+            border-radius: 1.7rem;
+            background: rgb(177, 177, 177);
+            height: 95%;
+            width: 95%;
+            transform: translate(2.5%,2.5%);
+        }
+        .titleMSG
+        {
+            font-family: monospace;
+            letter-spacing: .1rem;
+            text-align: center;
+            font-size: 3.6rem;
+        }
+
+        .btn
+        {
+            width: 200px;
+            height: 2.5rem;
+            background: transparent;
+            font-family: monospace;
+            font-size: 1.9rem;
+            cursor: pointer;
+            z-index: 2;
+        }
+
+        #aureaNo
+        {
+            position: absolute;
+            width: 500px;
+            height: 500px;
+            z-index: 1;
+        }
+
+        .btn:hover
+        {
+            background: rgba(22, 22, 22, 0.079);
+        }
+        .btnContainer
+        {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+        }
+
+        #contentNo
+        {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            transition: .1s;
+        }
+        #btnYes
+        {
+            position: absolute;
+            margin-left: 30%;
+            margin-top: 3rem;
+            transition: .3s;
+        }
+        #btnYes:hover
+        {
+            background: lightgreen;
+            animation: yes ease-in-out  10s;
+        }
+        @keyframes yes {
+            0%
+            {
+                transform: rotate(0);
+            }
+            25%
+            {
+                transform: rotate(360deg);
+            }
+            50%
+            {
+                transform: rotate(0);
+            }
+            75%
+            {
+                transform: rotate(360deg);
+            }
+            100%
+            {
+                transform: rotate(0);
+            }
+        }
+        #btnNo
+        {
+            position: absolute;
+            margin-left: 30%;
+            margin-top: 8rem;
+        }
+
+    </style>
+
+</head>
+<body>
+    <!-- components -->
+    <section class="container">
+        <h1 class="titleMSG">
+            Deseja um biscoito ?
+        </h1>
+        <section class="btnContainer">
+            <button id="btnYes" type="button" class="btn" title="Aceito">Yes</button>
+            <div id="contentNo">
+                <div id="aureaNo"></div>
+                <button id="btnNo" type="button" class="btn" title="Recuso">NO</button>
+            </div>
+        </section>
+    </section>
+    
+    <script type="text/javascript">
+
+        let btnNo = document.querySelector('#aureaNo').addEventListener('mouseenter', () =>
+        {
+
+            let contentNo = document.getElementById('contentNo');
+
+            var numberRadomY = Math.floor(Math.random() * 60) + 1;
+            var numberRadomX = Math.floor(Math.random() * 60) + 1;
+
+            contentNo.style.marginTop = numberRadomY + '%';
+            contentNo.style.marginLeft = numberRadomX + '%';
+
+            setTimeout(() =>
+            {
+                var numberRadomY = Math.floor(Math.random() * 30) + 1;
+                var numberRadomX = Math.floor(Math.random() * 30) + 1;
+
+                contentNo.style.marginTop = numberRadomY + '%';
+                contentNo.style.marginLeft = numberRadomX + '%';
+            }, 350);
+
+        });
+
+    </script>
+</body>
+</html>
